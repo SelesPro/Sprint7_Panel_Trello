@@ -1,0 +1,10 @@
+{% block content %}
+
+<table style="border: 1px solid black;">
+    {% for  lista in object_list %}
+        
+        <a href="{% url 'infotablero' lista.id %}"> <div style="width:150px; height:200px; margin:20px; background-color:blue; float:left">  {{lista.nombreLista}} </div> </a>
+        
+    {% endfor %}
+</table>
+{% endblock %}

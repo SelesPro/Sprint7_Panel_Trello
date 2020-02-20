@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Trello Layout with CSS Grid and Flexbox</title>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto|PT+Mono'><link rel="stylesheet" href="{%static 'css/style.css'%}">
+
+</head>
+<body>
+
+<!-- partial:creartablero.html -->
+<div> {% block content %} 
+<form method="POST"> {% csrf_token %}
+
+
+{{form.as_p}} 
+
+<input type="submit" value="enviar">
+</form>
+
+
+
+{% endblock %} </div>
+<br>
+<div class="ui">
+	<nav class="navbar app">{{info.creartablero}}</nav>
+	<nav class="navbar board"></nav>
+	<div class="lists">
+
+	{% for lista in info.listas.all %}
+		<div class="list">
+			<nav> {{lista.nombreLista}} </nav>
+			{% for tareas in lista.tareas.all%}
+			<ul>	
+				<li>{{tareas.nombre}}</li>
+			</ul>
+			<footer>Agregar Carta...</footer>
+			{% endfor %}
+		</div>
+	{% endfor %}
+		
+	</div>
+</div>
+
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.min.js'></script>
+</body>
+</html>
